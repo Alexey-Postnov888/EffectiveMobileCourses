@@ -60,16 +60,11 @@ class HomeViewModel(
             parseDate(it.publishDate)
         }
         _courses.value = sortedCourses
-//        _courses.update { currentCourses ->
-//            currentCourses.sortedByDescending { course ->
-//                parseDate(course.publishDate)
-//            }
-//        }
     }
 
     private fun parseDate(date: String): Date? {
         return try {
-            SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).parse(date)
+            SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse(date)
         } catch (e: Exception) {
             _error.value = "Ошибка парсинга даты"
             null
