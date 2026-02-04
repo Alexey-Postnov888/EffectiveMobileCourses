@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="login">Вход</string>
+    <string name="password">Пароль</string>
+    <string name="enterPassword">Введите пароль</string>
+    <string name="showPassword">Показать пароль</string>
+    <string name="hidePassword">Скрыть пароль</string>
+    <string name="haveNotAccount">Нет аккаунта?</string>
+    <string name="signIn">Регистрация</string>
+    <string name="forgotPassword">Забыл пароль</string>
+    <string name="vk">ВКонтакте</string>
+    <string name="ok">Одноклассники</string>
+</resources>

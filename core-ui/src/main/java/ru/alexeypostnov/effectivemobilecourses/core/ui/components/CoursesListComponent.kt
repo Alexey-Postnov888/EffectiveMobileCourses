@@ -28,6 +28,7 @@ import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -83,7 +84,7 @@ fun CoursesListComponent(
             }
 
             !isLoading && items.isEmpty() -> {
-                ErrorComponent(error = "Курсы не найдены...", modifier = Modifier
+                ErrorComponent(error = stringResource(R.string.coursesIsNotFound), modifier = Modifier
                     .constrainAs(errorComponent) {
                         centerHorizontallyTo(parent)
                         centerVerticallyTo(parent)
@@ -147,7 +148,7 @@ fun CourseCard(
 
                 Image(
                     bitmap = ImageBitmap.imageResource(R.drawable.cover),
-                    contentDescription = "Изображение курса",
+                    contentDescription = stringResource(R.string.imageOfCourse),
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(114.dp)
@@ -178,7 +179,7 @@ fun CourseCard(
                                 R.drawable.saved
                             }
                         ),
-                        contentDescription = "Избранное",
+                        contentDescription = stringResource(R.string.favourites),
                         tint = if (course.hasLike) Green else White,
                         modifier = Modifier
                             .padding(6.dp)
@@ -261,14 +262,14 @@ fun CourseCard(
                         },
                 ) {
                     Text(
-                        text = "Подробнее",
+                        text = stringResource(R.string.moreDetails),
                         fontSize = 12.sp,
                         color = Green
                     )
 
                     Icon(
                         imageVector = ImageVector.vectorResource(R.drawable.arrow_right_short_fill),
-                        contentDescription = "Подробнее",
+                        contentDescription = stringResource(R.string.moreDetails),
                         tint = Green
                     )
                 }

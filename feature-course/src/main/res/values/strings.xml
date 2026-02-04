@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="imageOfCourse">Изображение курса</string>
+    <string name="back">Назад</string>
+    <string name="favourites">Избранное</string>
+    <string name="imageOfAuthor">Фотография автора</string>
+    <string name="author">Автор</string>
+    <string name="startCourse">Начать курс</string>
+    <string name="goToPlatform">Перейти на платформу</string>
+    <string name="aboutCourse">О курсе</string>
+</resources>

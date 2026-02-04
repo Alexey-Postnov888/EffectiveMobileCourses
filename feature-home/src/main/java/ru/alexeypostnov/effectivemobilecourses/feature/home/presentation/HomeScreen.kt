@@ -21,6 +21,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -86,7 +87,7 @@ fun HomeScreenContent(
             leadingIcon = {
                 Icon(
                     imageVector = ImageVector.vectorResource(R.drawable.search),
-                    contentDescription = "Поиск",
+                    contentDescription = stringResource(R.string.search),
                     tint = White
                 )
             },
@@ -130,7 +131,7 @@ fun HomeScreenContent(
         ) {
             Icon(
                 imageVector = ImageVector.vectorResource(R.drawable.funnel),
-                contentDescription = "Фильтр",
+                contentDescription = stringResource(R.string.filter),
                 tint = White
             )
         }
@@ -148,14 +149,14 @@ fun HomeScreenContent(
                 },
         ) {
             Text(
-                text = "По дате добавления",
+                text = stringResource(R.string.byPublishDate),
                 style = MaterialTheme.typography.labelLarge,
                 color = Green
             )
 
             Icon(
                 imageVector = ImageVector.vectorResource(R.drawable.sort),
-                contentDescription = "Сортировка",
+                contentDescription = stringResource(R.string.sorting),
                 tint = Green
             )
         }

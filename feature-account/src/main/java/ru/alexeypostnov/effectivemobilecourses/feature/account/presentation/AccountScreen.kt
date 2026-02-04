@@ -17,6 +17,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -70,7 +71,7 @@ fun AccountScreenContent(
             accountScreenCoursesComponent) = createRefs()
 
         Text(
-            text = "Профиль",
+            text = stringResource(R.string.profile),
             style = MaterialTheme.typography.titleLarge,
             lineHeight = 28.sp,
             color = White,
@@ -82,9 +83,9 @@ fun AccountScreenContent(
         )
 
         val controlsItems = listOf<String>(
-            "Написать в поддержку",
-            "Настройки",
-            "Выйти из аккаунта"
+            stringResource(R.string.textToSupport),
+            stringResource(R.string.settings),
+            stringResource(R.string.logout)
         )
 
         ControlsList(
@@ -98,7 +99,7 @@ fun AccountScreenContent(
         )
 
         Text(
-            text = "Ваши курсы",
+            text = stringResource(R.string.yourCourses),
             style = MaterialTheme.typography.titleLarge,
             lineHeight = 28.sp,
             color = White,

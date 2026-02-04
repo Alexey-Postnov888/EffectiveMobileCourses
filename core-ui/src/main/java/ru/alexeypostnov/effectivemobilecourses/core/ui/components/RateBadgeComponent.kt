@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -40,7 +41,7 @@ fun RateBadgeComponent(modifier: Modifier = Modifier, rate: String, isLoading: B
     ) {
         Icon(
             imageVector = ImageVector.vectorResource(R.drawable.star_fill),
-            contentDescription = "Рейтинг",
+            contentDescription = stringResource(R.string.rate),
             tint = Green
         )
         Text(

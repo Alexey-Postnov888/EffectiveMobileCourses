@@ -32,6 +32,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -101,7 +102,7 @@ fun LoginScreenContent(
             loginScreenHorizontalDivider,
             loginScreenSocialNetworksContainer) = createRefs()
         Text(
-            "Вход",
+            stringResource(R.string.login),
             modifier = Modifier
                 .constrainAs(loginScreenTitle) {
                     top.linkTo(parent.top, margin = 100.dp)
@@ -152,7 +153,7 @@ fun LoginScreenContent(
             )
         )
         Text(
-            "Пароль",
+            stringResource(R.string.password),
             modifier = Modifier
                 .constrainAs(loginScreenPasswordTextFieldLabel) {
                     top.linkTo(loginScreenEmailTextField.bottom, margin = 16.dp)
@@ -169,7 +170,7 @@ fun LoginScreenContent(
             onValueChange = onPasswordChanged,
             placeholder = {
                 Text(
-                    "Введите пароль",
+                    stringResource(R.string.enterPassword),
                     style = MaterialTheme.typography.bodyMedium,
                     lineHeight = 20.sp,
                     letterSpacing = 0.25.sp,
@@ -206,9 +207,9 @@ fun LoginScreenContent(
                                 ImageVector.vectorResource(R.drawable.visibility_off_24),
                         contentDescription =
                             if (passwordVisible)
-                                "Показать пароль"
+                                stringResource(R.string.showPassword)
                             else
-                                "Скрыть пароль",
+                                stringResource(R.string.hidePassword),
                         tint = OnLightGray
                     )
                 }
@@ -236,7 +237,7 @@ fun LoginScreenContent(
             enabled = isValid
         ) {
             Text(
-                text = "Вход",
+                text = stringResource(R.string.login),
                 style = MaterialTheme.typography.labelLarge,
                 color = White,
                 lineHeight = 20.sp
@@ -254,19 +255,19 @@ fun LoginScreenContent(
                 }
         ) {
             Text(
-                text = "Нет аккаунта?",
+                text = stringResource(R.string.haveNotAccount),
                 fontSize = 12.sp,
                 color = White
             )
             Text(
-                text = "Регистрация",
+                text = stringResource(R.string.signIn),
                 fontSize = 12.sp,
                 color = Green,
             )
         }
 
         Text(
-            text = "Забыл пароль",
+            text = stringResource(R.string.forgotPassword),
             modifier = Modifier
                 .constrainAs(loginScreenForgetPassword) {
                     top.linkTo(loginScreenSignInContainer.bottom, margin = 8.dp)
@@ -307,7 +308,7 @@ fun LoginScreenContent(
             ) {
                 Icon(
                     imageVector = ImageVector.vectorResource(R.drawable.vk),
-                    contentDescription = "ВКонтакте",
+                    contentDescription = stringResource(R.string.vk),
                     tint = White
                 )
             }
@@ -323,7 +324,7 @@ fun LoginScreenContent(
             ) {
                 Icon(
                     imageVector = ImageVector.vectorResource(R.drawable.ok),
-                    contentDescription = "Одноклассники",
+                    contentDescription = stringResource(R.string.ok),
                     tint = White
                 )
             }

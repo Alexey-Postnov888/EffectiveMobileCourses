@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="coursesIsNotFound">Курсы не найдены...</string>
+    <string name="imageOfCourse">Изображение курса</string>
+    <string name="favourites">Избранное</string>
+    <string name="moreDetails">Подробнее</string>
+    <string name="error">Ошибка</string>
+    <string name="rate">Рейтинг</string>
+</resources>

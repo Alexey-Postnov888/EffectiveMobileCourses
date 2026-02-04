@@ -9,6 +9,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -17,6 +18,7 @@ import org.koin.androidx.compose.koinViewModel
 import ru.alexeypostnov.effectivemobilecourses.core.ui.components.CoursesListComponent
 import ru.alexeypostnov.effectivemobilecourses.core.ui.model.CourseUI
 import ru.alexeypostnov.effectivemobilecourses.core.ui.theme.White
+import ru.alexeypostnov.effectivemobilecourses.feature.favourites.R
 
 @Composable
 fun FavouritesScreen(
@@ -52,7 +54,7 @@ fun FavouritesScreenContent(
             .padding(16.dp)
     ) {
         Text(
-            text = "Избранное",
+            text = stringResource(R.string.favourites),
             style = MaterialTheme.typography.titleLarge,
             lineHeight = 28.sp,
             color = White

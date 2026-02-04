@@ -34,6 +34,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -101,7 +102,7 @@ fun CourseScreenContent(
             ) {
                 Image(
                     painter = painterResource(CoreUIDrawable.cover),
-                    contentDescription = "Изображение курса",
+                    contentDescription = stringResource(R.string.imageOfCourse),
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
                         .fillMaxWidth()
@@ -159,7 +160,7 @@ fun CourseScreenContent(
                         ) {
                             Icon(
                                 imageVector = ImageVector.vectorResource(R.drawable.arrow_left),
-                                contentDescription = "Назад",
+                                contentDescription = stringResource(R.string.back),
                             )
                         }
 
@@ -173,7 +174,7 @@ fun CourseScreenContent(
                         ) {
                             Icon(
                                 imageVector = ImageVector.vectorResource(R.drawable.bookmark),
-                                contentDescription = "Избранное",
+                                contentDescription = stringResource(R.string.favourites),
                                 tint = if (course.hasLike) Green else Dark
                             )
                         }
@@ -227,7 +228,7 @@ fun CourseScreenContent(
                 ) {
                     Image(
                         painter = painterResource(R.drawable.author),
-                        contentDescription = "Фотография автора",
+                        contentDescription = stringResource(R.string.imageOfAuthor),
                         modifier = Modifier
                             .size(40.dp)
                             .clip(RoundedCornerShape(20.dp))
@@ -237,7 +238,7 @@ fun CourseScreenContent(
 
                     ) {
                         Text(
-                            text = "Автор",
+                            text = stringResource(R.string.author),
                             color = OnDarkGray,
                             fontSize = 12.sp,
                             lineHeight = 14.sp,
@@ -275,7 +276,7 @@ fun CourseScreenContent(
                         contentPadding = PaddingValues(vertical = 10.dp)
                     ) {
                         Text(
-                            text = "Начать курс",
+                            text = stringResource(R.string.startCourse),
                             style = MaterialTheme.typography.labelLarge,
                             color = White,
                             lineHeight = 20.sp
@@ -294,7 +295,7 @@ fun CourseScreenContent(
                         contentPadding = PaddingValues(vertical = 10.dp)
                     ) {
                         Text(
-                            text = "Перейти на платформу",
+                            text = stringResource(R.string.goToPlatform),
                             style = MaterialTheme.typography.labelLarge,
                             color = White,
                             lineHeight = 20.sp
@@ -303,7 +304,7 @@ fun CourseScreenContent(
                 }
 
                 Text(
-                    text = "О курсе",
+                    text = stringResource(R.string.aboutCourse),
                     style = MaterialTheme.typography.titleLarge,
                     lineHeight = 28.sp,
                     color = White,
