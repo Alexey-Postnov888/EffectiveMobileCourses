@@ -46,7 +46,8 @@ fun AccountScreen(
         courses = courses,
         isLoading = isLoading,
         error = error,
-        onCourseClick = onCourseClick
+        onCourseClick = onCourseClick,
+        onSavedClick = viewModel::updateSavedStatus
     )
 }
 
@@ -55,7 +56,8 @@ fun AccountScreenContent(
     courses: List<CourseUI>,
     isLoading: Boolean,
     error: String?,
-    onCourseClick: (courseId: Int) -> Unit
+    onCourseClick: (courseId: Int) -> Unit,
+    onSavedClick: (courseId: Int, hasLike: Boolean) -> Unit
 ) {
     ConstraintLayout(
         modifier = Modifier
@@ -118,7 +120,8 @@ fun AccountScreenContent(
             items = courses,
             isLoading = isLoading,
             error = error,
-            onCourseClick = onCourseClick
+            onCourseClick = onCourseClick,
+            onSavedClick = onSavedClick
         )
     }
 }
@@ -190,6 +193,7 @@ fun AccountScreenPreview() {
         ),
         isLoading = true,
         error = null,
-        onCourseClick = {  },
+        onCourseClick = { },
+        onSavedClick = { _, _ -> }
     )
 }

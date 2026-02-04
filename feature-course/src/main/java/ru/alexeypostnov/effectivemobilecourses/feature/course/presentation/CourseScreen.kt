@@ -75,7 +75,8 @@ fun CourseScreen(courseId: Int) {
         course = course,
         isLoading = isLoading,
         error = error,
-        onBackClick = { navigator.pop() }
+        onBackClick = { navigator.pop() },
+        onSavedClick = viewModel::updateSavedStatus
     )
 }
 
@@ -84,7 +85,8 @@ fun CourseScreenContent(
     course: CourseUI,
     isLoading: Boolean,
     error: String?,
-    onBackClick: () -> Unit
+    onBackClick: () -> Unit,
+    onSavedClick: (courseId: Int, hasLike: Boolean) -> Unit
 ) {
     Scaffold { innerPadding ->
         Box(
@@ -162,17 +164,17 @@ fun CourseScreenContent(
                         }
 
                         IconButton(
-                            onClick = {  },
+                            onClick = { onSavedClick(course.id, !course.hasLike) },
                             modifier = Modifier
                                 .size(44.dp),
                             colors = IconButtonDefaults.iconButtonColors(
                                 containerColor = White,
-                                contentColor = Dark
                             ),
                         ) {
                             Icon(
                                 imageVector = ImageVector.vectorResource(R.drawable.bookmark),
                                 contentDescription = "Избранное",
+                                tint = if (course.hasLike) Green else Dark
                             )
                         }
                     }
@@ -399,6 +401,7 @@ fun CourseScreenPreview() {
             ),
         isLoading = true,
         error = null,
-        onBackClick = {  },
+        onBackClick = { },
+        onSavedClick = { _, _ -> }
     )
 }

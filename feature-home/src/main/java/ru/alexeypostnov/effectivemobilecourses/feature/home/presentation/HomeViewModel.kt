@@ -1,54 +1,33 @@
 package ru.alexeypostnov.effectivemobilecourses.feature.home.presentation
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.launch
 import ru.alexeypostnov.effectivemobilecourses.core.domain.usecase.GetCoursesListUseCase
-import ru.alexeypostnov.effectivemobilecourses.core.ui.mapper.toUi
-import ru.alexeypostnov.effectivemobilecourses.core.ui.model.CourseUI
+import ru.alexeypostnov.effectivemobilecourses.core.domain.usecase.UpdateFavouriteStatusByCourseIdUseCase
+import ru.alexeypostnov.effectivemobilecourses.core.ui.base.BaseViewModel
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
 class HomeViewModel(
-    private val getCoursesListUseCase: GetCoursesListUseCase
-): ViewModel() {
+    private val getCoursesListUseCase: GetCoursesListUseCase,
+    private val updateFavouriteStatusByCourseIdUseCase: UpdateFavouriteStatusByCourseIdUseCase
+): BaseViewModel() {
     private val _input = MutableStateFlow<String>("")
     val input: StateFlow<String> get() = _input
 
-    private val _courses = MutableStateFlow<List<CourseUI>>(emptyList())
-    val courses: StateFlow<List<CourseUI>> get() = _courses.asStateFlow()
-
-    private val _isLoading = MutableStateFlow<Boolean>(false)
-    val isLoading: StateFlow<Boolean> get() = _isLoading.asStateFlow()
-
-    private val _error = MutableStateFlow<String?>("")
-    val error: StateFlow<String?> get() = _error.asStateFlow()
-
     init {
-        loadCourses()
+        loadCourses(
+            getCoursesListUseCase = getCoursesListUseCase,
+        )
     }
 
-    fun loadCourses() {
-        if (_isLoading.value) return
-
-        viewModelScope.launch {
-            _isLoading.value = true
-            _error.value = null
-
-            try {
-                _courses.value = getCoursesListUseCase().map { it.toUi() }
-            } catch (e: Exception) {
-                if (_courses.value.isEmpty()) {
-                    _error.value = "Ошибка загрузки курсов"
-                }
-            } finally {
-                _isLoading.value = false
-            }
-        }
+    fun updateSavedStatus(courseId: Int, hasLike: Boolean) {
+        updateFavouriteStatus(
+            updateFavouriteStatusByCourseIdUseCase = updateFavouriteStatusByCourseIdUseCase,
+            courseId = courseId,
+            hasLike = hasLike
+        )
     }
 
     fun updateInput(newInput: String) {
@@ -64,7 +43,7 @@ class HomeViewModel(
 
     private fun parseDate(date: String): Date? {
         return try {
-            SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse(date)
+            SimpleDateFormat("dd MMMM yyyy", Locale("ru", "RU")).parse(date)
         } catch (e: Exception) {
             _error.value = "Ошибка парсинга даты"
             null

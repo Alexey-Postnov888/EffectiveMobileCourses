@@ -32,7 +32,8 @@ fun FavouritesScreen(
         courses = courses,
         isLoading = isLoading,
         error = error,
-        onCourseClick = onCourseClick
+        onCourseClick = onCourseClick,
+        onSavedClick = viewModel::updateSavedStatus
     )
 }
 
@@ -41,7 +42,8 @@ fun FavouritesScreenContent(
     courses: List<CourseUI>,
     isLoading: Boolean,
     error: String?,
-    onCourseClick: (courseId: Int) -> Unit
+    onCourseClick: (courseId: Int) -> Unit,
+    onSavedClick: (courseId: Int, hasLike: Boolean) -> Unit
 ) {
     Column (
         verticalArrangement = Arrangement.spacedBy(16.dp),
@@ -62,7 +64,8 @@ fun FavouritesScreenContent(
             items = courses,
             isLoading = isLoading,
             error = error,
-            onCourseClick = onCourseClick
+            onCourseClick = onCourseClick,
+            onSavedClick = onSavedClick
         )
     }
 }
@@ -85,6 +88,7 @@ fun FavouritesScreenPreview() {
         ),
         isLoading = true,
         error = null,
-        onCourseClick = {  },
+        onCourseClick = { },
+        onSavedClick = { _, _ -> }
     )
 }

@@ -48,7 +48,8 @@ fun CoursesListComponent(
     isLoading: Boolean,
     error: String?,
     onCourseClick: (courseId: Int) -> Unit,
-    listState: LazyListState = rememberLazyListState()
+    listState: LazyListState = rememberLazyListState(),
+    onSavedClick: (courseId: Int, hasLike: Boolean) -> Unit
 ) {
     ConstraintLayout(
         modifier = modifier
@@ -109,7 +110,8 @@ fun CoursesListComponent(
                         CourseCard(
                             course = course,
                             onCourseClick = onCourseClick,
-                            isLoading = isLoading
+                            isLoading = isLoading,
+                            onSavedClick = onSavedClick
                         )
                     }
                 }
@@ -119,7 +121,12 @@ fun CoursesListComponent(
 }
 
 @Composable
-fun CourseCard(course: CourseUI, isLoading: Boolean, onCourseClick: (courseId: Int) -> Unit) {
+fun CourseCard(
+    course: CourseUI,
+    isLoading: Boolean,
+    onCourseClick: (courseId: Int) -> Unit,
+    onSavedClick: (courseId: Int, hasLike: Boolean) -> Unit
+) {
     Card(
         onClick = { onCourseClick(course.id) },
         shape = RoundedCornerShape(16.dp),
@@ -152,7 +159,7 @@ fun CourseCard(course: CourseUI, isLoading: Boolean, onCourseClick: (courseId: I
                 )
 
                 IconButton(
-                    onClick = { },
+                    onClick = { onSavedClick(course.id, !course.hasLike) },
                     colors = IconButtonDefaults.iconButtonColors(
                         containerColor = DarkGray.copy(alpha = 0.3f)
                     ),

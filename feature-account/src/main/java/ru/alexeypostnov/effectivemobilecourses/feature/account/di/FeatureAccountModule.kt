@@ -5,7 +5,7 @@ import org.koin.dsl.module
 import ru.alexeypostnov.effectivemobilecourses.feature.account.presentation.AccountViewModel
 
 private val featureAccountViewModelModule = module {
-    viewModel { AccountViewModel(get()) }
+    viewModel { AccountViewModel(get(), get()) }
 }
 
 val featureAccountModule = module {

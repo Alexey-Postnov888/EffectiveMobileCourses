@@ -54,7 +54,8 @@ fun HomeScreen(
         isLoading = isLoading,
         error = error,
         onCourseClick = onCourseClick,
-        onSortClick = viewModel::sortCoursesByPublishDate
+        onSortClick = viewModel::sortCoursesByPublishDate,
+        onSavedClick = viewModel::updateSavedStatus
     )
 }
 
@@ -67,6 +68,7 @@ fun HomeScreenContent(
     error: String?,
     onCourseClick: (courseId: Int) -> Unit,
     onSortClick: () -> Unit,
+    onSavedClick: (courseId: Int, hasLike: Boolean) -> Unit,
 ) {
     ConstraintLayout(
         modifier = Modifier
@@ -169,7 +171,8 @@ fun HomeScreenContent(
             items = courses,
             isLoading = isLoading,
             error = error,
-            onCourseClick = onCourseClick
+            onCourseClick = onCourseClick,
+            onSavedClick = onSavedClick
         )
     }
 }
@@ -195,5 +198,7 @@ fun HomeScreenPreview() {
         isLoading = true,
         error = null,
         onCourseClick = { },
-    ) { }
+        onSortClick = { },
+        onSavedClick = { _, _ -> }
+    )
 }

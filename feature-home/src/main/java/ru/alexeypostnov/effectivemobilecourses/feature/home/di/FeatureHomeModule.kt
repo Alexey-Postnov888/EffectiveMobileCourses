@@ -5,7 +5,7 @@ import org.koin.dsl.module
 import ru.alexeypostnov.effectivemobilecourses.feature.home.presentation.HomeViewModel
 
 private val featureHomeViewModelModule = module {
-    viewModel { HomeViewModel(get()) }
+    viewModel { HomeViewModel(get(), get()) }
 }
 val featureHomeModule = module {
     includes(
